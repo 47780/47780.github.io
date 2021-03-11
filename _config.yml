@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: catorce-uno
+title: catorce.uno
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is Leo's blog.
@@ -26,6 +26,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: huecohabitable
 github_username:  "47780"
+
+# Google analytics stuff
+google_analytics: G-BW4K17LY6K
 # Build settings
 # theme: minima
 plugins:
