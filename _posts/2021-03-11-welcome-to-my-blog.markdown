@@ -5,9 +5,9 @@ date:   2021-03-11 16:25:00 -0600
 categories: first post
 ---
 
-# Cool picture
+Firts post! Nothing interesting to post just yet but check out this cool picture I found. Hopefully I'll have more interesting stuff to post soon lol.
 
-Here is a cool picture that I found on the internet.
+Cool picture:
 
 ![Cool picture](/assets/pictures/free-picture.jpg)
 [source](https://unsplash.com/photos/GRr8B74jRlM)
