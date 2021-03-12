@@ -2,6 +2,7 @@
 layout: post
 title:  "Welcome to my blog!"
 date:   2021-03-11 16:25:00 -0600
+author: Leo
 categories: first post
 ---
 
