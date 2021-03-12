@@ -20,6 +20,7 @@ plugins:
   
 # Links
 jekyll_link: "https://jekyllrb.com/"
+githubpages_link: "https://pages.github.com/"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
