@@ -17,6 +17,9 @@ google_analytics: G-BW4K17LY6K
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  
+# Links
+jekyll_link: "https://jekyllrb.com/"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
