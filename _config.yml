@@ -8,6 +8,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: huecohabitable
 github_username:  "47780"
 show_excerpts: true
+author: Leo
 
 # Google analytics stuff
 google_analytics: G-BW4K17LY6K
