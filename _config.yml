@@ -7,6 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: huecohabitable
 github_username:  "47780"
+show_excerpts: true
 
 # Google analytics stuff
 google_analytics: G-BW4K17LY6K
