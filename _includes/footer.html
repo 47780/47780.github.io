@@ -2,16 +2,8 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
-
-    <a href="{{ "/" | relative_url }}">
-      <svg class="svg-icon"> 
-        <use xlink:href="{{ '/assets/icon.svg' | relative_url }}"></use>
-      </svg>
-      <h2 class="footer-heading">
-        {{ site.title | escape }}
-      </h2>
-    </a>
-
+    <svg class="svg-icon"> <use xlink:href="{{ '/assets/icon.svg' | relative_url }}"></use></svg>
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
@@ -33,10 +25,10 @@
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>
-          {{- site.description | escape -}}</p>
-          Powered by <a href="{{ site.githubpages_link }}">GitHub Pages</a> & <a href="{{ site.jekyll_link }}">Jekyll</a>
-        </p>
+        <ul class="3rd-column">
+          <li class="dsc">{{- site.description | escape -}}</li>
+          <li class="info">Powered by <a href="{{ site.githubpages_link }}">GitHub Pages</a> & <a href="{{ site.jekyll_link }}">Jekyll</a></li>
+        </ul>
       </div>
     </div>
 
