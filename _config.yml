@@ -1,6 +1,6 @@
 # Site settings
 title: catorce.uno
-email: your-email@example.com
+email: leo@catorce.uno
 description: >- # this means to ignore newlines until "baseurl:"
   A-87666362012
 baseurl: "" # the subpath of your site, e.g. /blog
