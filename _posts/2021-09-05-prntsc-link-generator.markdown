@@ -6,22 +6,22 @@ author: Leo
 categories: javascript
 ---
 
-So today I was watching a [LTT](https://youtu.be/05K5glVCwis) video about TikTok _hacks_ and they mentioned [this](https://prnt.sc/) site. It is apparently a service that lets you host screenshots to share easily. They also offer a tool that seems to automatically generate a url for your screenshot. This is where things sketchy.
+So, today I was watching a [LTT](https://youtu.be/05K5glVCwis) video about TikTok _hacks_ and they mentioned [this](https://prnt.sc/) site. It is apparently a service that lets you host screenshots to share easily. They also offer a tool that seems to automatically generate a url for your screenshot. This is where things get sketchy.
 
-All the links are publicly accessible and in a very predictable two letter, four digit format `https://prnt.sc/aa0000`. I spent a couple of minutes typing random letters and numbers before I got annoyed and figured I could automate it so here it is:
+All the links are publicly accessible and in a very predictable two letter, four digit format `https://prnt.sc/aa0000`. I spent a couple of minutes typing random letters and numbers before I got annoyed and figured I could automate it, so here it is:
 
 ### Link Generator
 
 {% include prnt-link-generator.html %}
 
 ## Code
-Because GitHub Pages only lets you run client-side scripts I had to learn some JS to make this so don't judge my code too much.
+Because GitHub Pages only lets you run client-side scripts, I had to learn some JS to make this, so don't judge my code too much.
 
 ```js
-// This function will write a new link to the the html link element
+// this function will write a new link to the the html link element
 function rnd_link() {
 
-    // Make 4 random digits
+    // make 4 random digits
     let a = Math.floor(Math.random() * 10);
     let b = Math.floor(Math.random() * 10);
     let c = Math.floor(Math.random() * 10);
@@ -37,10 +37,10 @@ function rnd_link() {
         string += String.fromCharCode(rnd_char)
     }
 
-    // Build url string
+    // build url string
     url = 'https://prnt.sc/' + string + a + b + c + d
 
-    // Add url to link and link text
+    // add url to link and link text
     document.getElementById("link").innerHTML = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
 }
 ```
