@@ -1,0 +1,32 @@
+<button onclick="rnd_link()">Generate link</button>
+
+<p id="link"></p>
+
+<script>
+
+// This function will write a new link to the the html link element
+function rnd_link() {
+
+    // Make 4 random digits
+    let a = Math.floor(Math.random() * 10);
+    let b = Math.floor(Math.random() * 10);
+    let c = Math.floor(Math.random() * 10);
+    let d = Math.floor(Math.random() * 10);
+
+    // variables to store the random letters
+    let string = '';
+    let rnd_char;
+
+    // make two random letters using the ASCII numbers for all lower case letters
+    for (let i = 0; i < 2; i++) {
+        rnd_char = Math.floor((Math.random() * 25) + 97);
+        string += String.fromCharCode(rnd_char)
+    }
+
+    // Build url string
+    url = 'https://prnt.sc/' + string + a + b + c + d
+
+    // Add url to link and link text
+    document.getElementById("link").innerHTML = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
+}
+</script>
