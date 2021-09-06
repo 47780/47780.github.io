@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://catorce.uno/feed.xml" rel="self" type="application/atom+xml" /><link href="https://catorce.uno/" rel="alternate" type="text/html" /><updated>2021-09-06T14:01:27-05:00</updated><id>https://catorce.uno/feed.xml</id><title type="html">catorce.uno</title><subtitle>A-87666362012</subtitle><author><name>Leo</name></author><entry><title type="html">Print.sc Link Generator</title><link href="https://catorce.uno/javascript/2021/09/06/prntsc-link-generator.html" rel="alternate" type="text/html" title="Print.sc Link Generator" /><published>2021-09-06T01:30:00-05:00</published><updated>2021-09-06T01:30:00-05:00</updated><id>https://catorce.uno/javascript/2021/09/06/prntsc-link-generator</id><content type="html" xml:base="https://catorce.uno/javascript/2021/09/06/prntsc-link-generator.html">&lt;p&gt;So today I was watching a &lt;a href=&quot;https://youtu.be/05K5glVCwis&quot;&gt;LTT&lt;/a&gt; video about TikTok &lt;em&gt;hacks&lt;/em&gt; and they mentioned &lt;a href=&quot;https://prnt.sc/&quot;&gt;this&lt;/a&gt; site. It is apparently a service that lets you host screenshots to share easily. They also offer a tool that seems to automatically generate a url for your screenshot. This is where things sketchy.&lt;/p&gt;
+
+&lt;p&gt;All the links are publicly accessible and in a very predictable two letter, four digit format &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://prnt.sc/aa0000&lt;/code&gt;. I spent a couple of minutes typing random letters and numbers before I got annoyed and figured I could automate it so here it is:&lt;/p&gt;
+
+&lt;h3 id=&quot;link-generator&quot;&gt;Link Generator&lt;/h3&gt;
+
+&lt;p&gt;&lt;button onclick=&quot;rnd_link()&quot;&gt;Generate link&lt;/button&gt;&lt;/p&gt;
+
+&lt;p id=&quot;link&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+// This function will write a new link to the the html link element
+function rnd_link() {
+
+    // Make 4 random digits
+    let a = Math.floor(Math.random() * 10);
+    let b = Math.floor(Math.random() * 10);
+    let c = Math.floor(Math.random() * 10);
+    let d = Math.floor(Math.random() * 10);
+
+    // variables to store the random letters
+    let string = '';
+    let rnd_char;
+
+    // make two random letters using the ASCII numbers for all lower case letters
+    for (let i = 0; i &lt; 2; i++) {
+        rnd_char = Math.floor((Math.random() * 25) + 97);
+        string += String.fromCharCode(rnd_char)
+    }
+
+    // Build url string
+    url = 'https://prnt.sc/' + string + a + b + c + d
+
+    // Add url to link and link text
+    document.getElementById(&quot;link&quot;).innerHTML = '&lt;a href=&quot;' + url + '&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;' + url + '&lt;/a&gt;';
+}
+&lt;/script&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Because GitHub Pages only lets you run client-side scripts I had to learn some JS to make this so don’t judge my code too much.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// This function will write a new link to the the html link element&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rnd_link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Make 4 random digits&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// variables to store the random letters&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rnd_char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// make two random letters using the ASCII numbers for all lower case letters&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;rnd_char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromCharCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rnd_char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Build url string&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https://prnt.sc/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Add url to link and link text&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;lt;a href=&quot;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Generating random numbers in JS is a bit annoying since the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.random()&lt;/code&gt; function only gives you a random number between 0 and 1 but not including 1. This means you have to add the math to turn that into a random number from 0 to 10.&lt;/p&gt;
+
+&lt;p&gt;The other weird bit was making the random 4 digit number since you can’t specify length for the random number. I am sure there is a better way of doing it but I didn’t want to think about it too much so just generating 4 separate digits was good enough for me. This also makes sure that cases like a two digit number have their corresponding zeros on the left side.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;I have also made this link generator available &lt;a href=&quot;https://catorce.uno/prnt-link-generator&quot;&gt;here&lt;/a&gt; as a stand alone git pages site. I still have to make some quality of life improvements like responsive html so it doesn’t look like it was made for ants when you see it from a smartphone. Also, if I don’t get distracted from this, I might make it fetch and display the screenshot from the site so you don’t have to navigate to a different tab./&lt;/p&gt;
+
+&lt;p&gt;And please don’t use sketchy sites that host your screenshots publicly!&lt;/p&gt;</content><author><name>Leo</name></author><category term="javascript" /><summary type="html">So today I was watching a LTT video about TikTok hacks and they mentioned this site. It is apparently a service that lets you host screenshots to share easily. They also offer a tool that seems to automatically generate a url for your screenshot. This is where things sketchy. All the links are publicly accessible and in a very predictable two letter, four digit format https://prnt.sc/aa0000. I spent a couple of minutes typing random letters and numbers before I got annoyed and figured I could automate it so here it is: Link Generator Generate link Code Because GitHub Pages only lets you run client-side scripts I had to learn some JS to make this so don’t judge my code too much. // This function will write a new link to the the html link element function rnd_link() { // Make 4 random digits let a = Math.floor(Math.random() * 10); let b = Math.floor(Math.random() * 10); let c = Math.floor(Math.random() * 10); let d = Math.floor(Math.random() * 10); // variables to store the random letters let string = ''; let rnd_char; // make two random letters using the ASCII numbers for all lower case letters for (let i = 0; i &amp;lt; 2; i++) { rnd_char = Math.floor((Math.random() * 25) + 97); string += String.fromCharCode(rnd_char) } // Build url string url = 'https://prnt.sc/' + string + a + b + c + d // Add url to link and link text document.getElementById(&quot;link&quot;).innerHTML = '&amp;lt;a href=&quot;' + url + '&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&amp;gt;' + url + '&amp;lt;/a&amp;gt;'; } Generating random numbers in JS is a bit annoying since the Math.random() function only gives you a random number between 0 and 1 but not including 1. This means you have to add the math to turn that into a random number from 0 to 10. The other weird bit was making the random 4 digit number since you can’t specify length for the random number. I am sure there is a better way of doing it but I didn’t want to think about it too much so just generating 4 separate digits was good enough for me. This also makes sure that cases like a two digit number have their corresponding zeros on the left side. Final thoughts I have also made this link generator available here as a stand alone git pages site. I still have to make some quality of life improvements like responsive html so it doesn’t look like it was made for ants when you see it from a smartphone. Also, if I don’t get distracted from this, I might make it fetch and display the screenshot from the site so you don’t have to navigate to a different tab./ And please don’t use sketchy sites that host your screenshots publicly!</summary></entry><entry><title type="html">Welcome to my blog!</title><link href="https://catorce.uno/misc/2021/03/11/welcome-to-my-blog.html" rel="alternate" type="text/html" title="Welcome to my blog!" /><published>2021-03-11T16:25:00-06:00</published><updated>2021-03-11T16:25:00-06:00</updated><id>https://catorce.uno/misc/2021/03/11/welcome-to-my-blog</id><content type="html" xml:base="https://catorce.uno/misc/2021/03/11/welcome-to-my-blog.html">&lt;p&gt;Firts post! Nothing interesting to post just yet but check out this cool picture I found. Hopefully I’ll have more interesting stuff to post soon lol.&lt;/p&gt;
+
+&lt;p&gt;Cool picture:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pictures/free-picture.jpg&quot; alt=&quot;Cool picture&quot; /&gt;
+&lt;a href=&quot;https://unsplash.com/photos/GRr8B74jRlM&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is some text to make this post a little bit less empty.&lt;/p&gt;</content><author><name>Leo</name></author><category term="misc" /><summary type="html">Firts post! Nothing interesting to post just yet but check out this cool picture I found. Hopefully I’ll have more interesting stuff to post soon lol. Cool picture: source Here is some text to make this post a little bit less empty.</summary></entry></feed>
