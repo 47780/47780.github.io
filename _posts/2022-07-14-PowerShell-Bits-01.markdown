@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PowersShell Bits #01"
+title:  "PowerShell Bits 01"
 date:   2022-07-14 00:00:00 -0600
 author: Leo
 categories: powershell
@@ -87,3 +87,4 @@ Then we just need to confirm and we're all done!
 ```powershell
 Get-ADGroupMember "CN=Security_Group-1,OU=Security,OU=Groups,DC=ad,DC=catorce,DC=uno"
 ```
+
