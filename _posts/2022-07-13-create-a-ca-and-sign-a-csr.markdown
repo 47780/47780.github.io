@@ -12,9 +12,15 @@ This assumes I already have a CSR. Maybe I'll add a section on how to make a CSR
 
 ## Making a CA
 1. Make the key for the Certificate Authority
-```openssl genrsa -out MyRootCA.key 2048```
+```bash
+openssl genrsa -out MyRootCA.key 2048
+```
 2. Create certificate using the new key we just made
-```openssl req -x509 -new -nodes -key MyRootCA.key -sha256 -days 1024 -out MyRootCA.pem```
+```bash
+openssl req -x509 -new -nodes -key MyRootCA.key -sha256 -days 1024 -out MyRootCA.pem
+```
 3. Sign CSR with the new Certificate Authority
-```openssl x509 -req -in MyClient1.csr -CA MyRootCA.pem -CAkey MyRootCA.key -CAcreateserial -out MyClient1.pem -days 1024 -sha256```
+```bash
+openssl x509 -req -in MyClient1.csr -CA MyRootCA.pem -CAkey MyRootCA.key -CAcreateserial -out MyClient1.pem -days 1024 -sha256
+```
 4. Done!
