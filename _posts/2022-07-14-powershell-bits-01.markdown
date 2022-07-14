@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PowerShell Bits #01"
-date:   2022-07-14 00:30:00 -0600
+date:   2022-07-14 00:00:00 -0500
 author: Leo
 categories: powershell
 ---
