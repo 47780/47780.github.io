@@ -1,22 +1,18 @@
 ---
 layout: post
-title:  "PowerShell Bits 01"
+title:  "PowerShell Bits #01"
 date:   2022-07-14 00:30:00 -0600
 author: Leo
 categories: powershell
 ---
 
-# PowerShell Bits 01
-
-Once again, the whole purpose behind this site is to generally minimize the amount of times I have to google the same things again and again. So to help my memory of a goldfish, I'm starting a series were I jot down quick PowerShell commands I put together that I know I'll be using again later.
+Once again, the whole purpose behind this site is to generally minimize the amount of times I have to google the same things again and again. So, to help my limited memory, I'm starting a series were I jot down quick *PowerShell* commands I put together that I know I'll be using again later.
 
 This first entry will cover a couple commands I put together when I needed to create several groups at once and also add users to these groups. There are probably prettier ways of doing this but, I am a big fan of quick and dirty when it comes to small one off scripts like this.
 
-
-
 ## Creating groups in bulk
 
-I had a list of like 8 groups that needed to be created, all under the same OU so we'll just start with an array for the names.
+I had a list of 8 groups that needed to be created, all under the same OU so we'll just start with an array for the names.
 
 ```powershell
 $group_list = @(
@@ -31,7 +27,7 @@ $group_list = @(
 )
 ```
 
-Next I put together the command to create these groups, they are all the same type and scope.
+Next I put together the command to create these groups, they are all the same type and scope so we can keep it simple.
 
 ```powershell
 New-ADGroup -name <group name> -GroupCategory Security -GroupScope Global -Path "OU=Security,OU=Groups,DC=ad,DC=catorce,DC=uno"
@@ -45,17 +41,19 @@ foreach ($group in $group_list) {
 }
 ```
 
-Just to make sure I don't make a mess, I usually thrown in a `-whatif` to see that things run without errors before pulling the trigger. If everything clears we can just go back and take off that flag and let it create the groups. Then just to check everything was created properly we can just check for the contents of that OU.
+Just to make sure I don't make a mess, I usually thrown in a `-whatif` to see that things run without errors before pulling the trigger. If everything clears we can just go back and take off that flag and let it create the groups. 
+
+Finally, just to check everything was created properly we can just check for the contents of that OU.
 
 ```powershell
 Get-ADGroup -Filter 'name -like "*"' -SearchBase 'OU=Security,OU=Groups,DC=ad,DC=catorce,DC=uno' | select name
 ```
 
-
-
 ## Adding users to a group
 
-Next lets add a list of users to a group. Same process, make an array of users and then use a `foreach` loop to add them all at once. In this scenario I only have the first and last name of the users. Ideally I'd prefer to use `samaccountname` or another identifier that is unique to avoid mistakes but since it wasn't a lot of users and I needed to get this done quickly I'm just using the names to identify the users.
+Next, lets add a list of users to a group. Same process, make an array of users and then use a `foreach` loop to add them all at once. 
+
+In this scenario I only have the first and last name of the users. Ideally I'd prefer to use `SamAccountName` or another identifier that is unique to avoid mistakes but since it wasn't a lot of users and I needed to get this done quickly I'm just using the names to identify the users.
 
 ```powershell
 $user_list = @(
