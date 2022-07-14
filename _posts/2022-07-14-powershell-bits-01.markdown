@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "PowerShell Bits 01"
-date:   2022-07-14 00:30:00 -0600
+title:  "PowerShell Bits #01"
+date:   2022-07-14 00:00:00 -0500
 author: Leo
 categories: powershell
 ---
 
-# PowerShell Bits 01
+# PowerShell Bits \#01
 
 Once again, the whole purpose behind this site is to generally minimize the amount of times I have to google the same things again and again. So to help my memory of a goldfish, I'm starting a series were I jot down quick PowerShell commands I put together that I know I'll be using again later.
 
